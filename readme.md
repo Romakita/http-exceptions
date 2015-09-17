@@ -7,7 +7,8 @@ This module lets you to throw an HTTPException quickly.
 ## Features
 * Very Simple API
 * Two middlewares are available. HTTPException.mime() and HTTPException.globalHandler()
-* Some HTTP code are implemented : 
+
+Some HTTP Exception are already implemented : 
  * BadRequest
  * Unauthorized
  * PaymentRequired
@@ -21,6 +22,8 @@ This module lets you to throw an HTTPException quickly.
  * ProxyError
  * ServiceUnvailable
  * GatewayTimeout
+ 
+You can use HTTPException method to throw a custom Exception (see example).
 
 
 ## Install
@@ -37,16 +40,17 @@ Use `npm install httpexceptions`.
    httpException.debug(true);
    
    app.use(httpException.mime('application/json'));
+   app.use(httpException.paramsRequired());
    
-   //or
-    app.use(httpException.mime(['application/json', 'text/xml']));
+   // OR
+   // app.use(httpException.mime(['application/json', 'text/xml']));
    
    app.get('/my/route/exception', function(req, res){
    
         throw new httpException.BadRequest('Custom Message'); //Emit 
         
-        //or
-        throw new httpException.HTTPException(510, 'Custom Message');
+        // OR
+        // throw new httpException.HTTPException(510, 'Custom Message');
    
    });
    
