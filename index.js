@@ -2,6 +2,7 @@
 /// <reference path="typings/express/express.d.ts" />
 var HTTPException;
 (function (HTTPException_1) {
+    var debugEnable = true;
     HTTPException_1.HTTPException = require('./lib/http-exception');
     HTTPException_1.BadGateway = require('./lib/types/badgateway');
     HTTPException_1.BadRequest = require('./lib/types/badrequest');
@@ -16,6 +17,10 @@ var HTTPException;
     HTTPException_1.ProxyError = require('./lib/types/proxyerror');
     HTTPException_1.ServiceUnvailable = require('./lib/types/serviceunvailable');
     HTTPException_1.Unauthorized = require('./lib/types/unauthorized');
+    function debug(b) {
+        debugEnable = b;
+    }
+    HTTPException_1.debug = debug;
     /**
      *
      * @param list
@@ -44,6 +49,9 @@ var HTTPException;
             if (err instanceof HTTPException_1.HTTPException) {
                 res.status(err.status)
                     .send(err.getMessage());
+                if (debugEnable) {
+                    throw err;
+                }
             }
         };
     }

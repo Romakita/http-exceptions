@@ -13,6 +13,8 @@ declare module Express {
 
 module HTTPException{
 
+    var debugEnable = true;
+
     export var HTTPException = require('./lib/http-exception');
     export var BadGateway = require('./lib/types/badgateway');
     export var BadRequest = require('./lib/types/badrequest');
@@ -28,6 +30,9 @@ module HTTPException{
     export var ServiceUnvailable = require('./lib/types/serviceunvailable');
     export var Unauthorized = require('./lib/types/unauthorized');
 
+    export function debug(b:boolean){
+        debugEnable = b;
+    }
     /**
      *
      * @param list
@@ -65,6 +70,9 @@ module HTTPException{
                 res.status(err.status)
                     .send(err.getMessage());
 
+                if(debugEnable){
+                    throw err;
+                }
             }
         }
 

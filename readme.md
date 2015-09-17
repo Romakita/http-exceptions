@@ -23,13 +23,40 @@ This module lets you to throw an HTTPException quickly.
  * GatewayTimeout
 
 
-Install
----
+## Install
 
-Use `npm install http-exceptions`.
+Use `npm install httpexceptions`.
 
-Test
----
+## API
+
+``` javascript
+   var httpException = require('httpexception');
+   var express = require('express');
+   var app = express();
+   
+   httpException.debug(true);
+   
+   app.use(httpException.mime('application/json'));
+   
+   //or
+    app.use(httpException.mime(['application/json', 'text/xml']));
+   
+   app.get('/my/route/exception', function(req, res){
+   
+        throw new httpException.BadRequest('Custom Message'); //Emit 
+        
+        //or
+        throw new httpException.HTTPException(510, 'Custom Message');
+   
+   });
+   
+   //at the end
+   //GlobalHandler middleware catch exception and send response to the client
+   app.use(httpException.globalHandler());
+```
+
+## Test
+
 
 Use `npm test`.
 
