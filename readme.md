@@ -57,7 +57,6 @@ Use `npm install httpexceptions`.
 
 ## Test
 
-
 Use `npm test`.
 
 
