@@ -1,4 +1,5 @@
 /// <reference path="typings/node/node.d.ts" />
+/// <reference path="typings/express/express.d.ts" />
 var HTTPException;
 (function (HTTPException_1) {
     HTTPException_1.HTTPException = require('./lib/http-exception');
@@ -15,6 +16,38 @@ var HTTPException;
     HTTPException_1.ProxyError = require('./lib/types/proxyerror');
     HTTPException_1.ServiceUnvailable = require('./lib/types/serviceunvailable');
     HTTPException_1.Unauthorized = require('./lib/types/unauthorized');
+    /**
+     *
+     * @param list
+     * @returns {function(Object, Object, Function): *}
+     */
+    function mime(list) {
+        if (typeof list == 'string') {
+            list = [list];
+        }
+        return function (req, res, next) {
+            for (var i = 0; i < list.length; i++) {
+                if (!req.accepts(list[0])) {
+                    throw new HTTPException_1.NotAcceptable(list[0]);
+                }
+            }
+            return next();
+        };
+    }
+    HTTPException_1.mime = mime;
+    /**
+     *
+     * @returns {function(any, Express.Request, Express.Response): undefined}
+     */
+    function globalHandler() {
+        return function (err, req, res) {
+            if (err instanceof HTTPException_1.HTTPException) {
+                res.status(err.status)
+                    .send(err.getMessage());
+            }
+        };
+    }
+    HTTPException_1.globalHandler = globalHandler;
 })(HTTPException || (HTTPException = {}));
 module.exports = HTTPException;
 //# sourceMappingURL=index.js.map
