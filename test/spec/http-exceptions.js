@@ -20,7 +20,7 @@ describe('HTTPExceptions', function(){
             throw new HTTPException.BadGateway('message');
         }catch(err){
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(502);
+            expect(err.status).to.equal(502);
         }
 
     });
@@ -32,7 +32,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(400);
+            expect(err.status).to.equal(400);
         }
 
     });
@@ -44,7 +44,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(403);
+            expect(err.status).to.equal(403);
         }
 
     });
@@ -56,7 +56,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(400);
+            expect(err.status).to.equal(400);
         }
 
     });
@@ -68,7 +68,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(500);
+            expect(err.status).to.equal(500);
         }
 
     });
@@ -80,7 +80,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(405);
+            expect(err.status).to.equal(405);
         }
 
     });
@@ -92,7 +92,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(406);
+            expect(err.status).to.equal(406);
         }
 
     });
@@ -105,7 +105,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(404);
+            expect(err.status).to.equal(404);
         }
 
     });
@@ -117,7 +117,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(501);
+            expect(err.status).to.equal(501);
         }
 
     });
@@ -129,7 +129,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(402);
+            expect(err.status).to.equal(402);
         }
 
     });
@@ -141,7 +141,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(502);
+            expect(err.status).to.equal(502);
         }
 
     });
@@ -153,7 +153,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(503);
+            expect(err.status).to.equal(503);
         }
 
     });
@@ -165,7 +165,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
-            expect(err.getStatus()).to.equal(401);
+            expect(err.status).to.equal(401);
         }
 
     });
