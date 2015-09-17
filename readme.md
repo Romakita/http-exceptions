@@ -7,20 +7,18 @@ This module lets you to throw an HTTP Exception quickly.
 ## Features
 * Very Simple API
 * Two middlewares are available. HTTPException.mime() and HTTPException.globalHandler()
-* Some HTTP code are implemented :
-** BadRequest
-** Unauthorized
-** PaymentRequired
-** Forbidden
-** NotFound
-** MethodNotAllowed
-** NotAcceptable
-** InternalServerError
-** NotImplemented
-** BadGateway
-** ProxyError
-** ServiceUnvailable
-** GatewayTimeout
+* Some HTTP code are implemented : BadRequest, Unauthorized
+ * PaymentRequired
+ * Forbidden
+ * NotFound
+ * MethodNotAllowed
+ * NotAcceptable
+ * InternalServerError
+ * NotImplemented
+ * BadGateway
+ * ProxyError
+ * ServiceUnvailable
+ * GatewayTimeout
 
 
 Install
