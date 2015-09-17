@@ -1,4 +1,4 @@
-# HTTP Exceptions [![Build Status](https://travis-ci.org/Romakita/mongoose-promised.svg?branch=master)](https://travis-ci.org/Romakita/mongoose-promised)]
+# HTTP Exceptions [![Build Status](https://travis-ci.org/Romakita/mongoose-promised.svg?branch=master)](https://travis-ci.org/Romakita/mongoose-promised)
 
 > Provide Exceptions for REST API based on Express.js.
 
