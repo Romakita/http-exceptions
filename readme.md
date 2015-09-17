@@ -1,8 +1,8 @@
-# HTTP Exceptions [![Build Status](https://travis-ci.org/Romakita/mongoose-promised.svg?branch=master)](https://travis-ci.org/Romakita/mongoose-promised)
+# HTTPExceptions [![Build Status](https://travis-ci.org/Romakita/httpexceptions.svg?branch=master)](https://travis-ci.org/Romakita/httpexceptions)
 
 > Provide Exceptions for REST API based on Express.js.
 
-This module lets you to throw an HTTP Exception quickly.
+This module lets you to throw an HTTPException quickly.
 
 ## Features
 * Very Simple API

@@ -1,5 +1,5 @@
 {
-  "name": "http-exceptions",
+  "name": "httpexceptions",
   "version": "1.0.0",
   "description": "Provide exception for HTTP Rest API",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/romakita/http-exceptions"
+    "url": "http://github.com/romakita/httpexceptions"
   },
   "keywords": [
     "Exceptions",
@@ -19,9 +19,9 @@
   "author": "Romakita",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/romakita/http-exceptions/issues"
+    "url": "https://github.com/romakita/httpexceptions/issues"
   },
-  "homepage": "https://github.com/romakita/http-exceptions",
+  "homepage": "https://github.com/romakita/httpexceptions",
   "dependencies": {
 
   },
