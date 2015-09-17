@@ -11,7 +11,7 @@ var HTTPException;
     HTTPException_1.InternalServerError = require('./lib/types/internalservererror');
     HTTPException_1.MethodNotAllowed = require('./lib/types/methodnotallowed');
     HTTPException_1.NotAcceptable = require('./lib/types/notacceptable');
-    HTTPException_1.NotFound = require('./lib/types/notFound');
+    HTTPException_1.NotFound = require('./lib/types/notfound');
     HTTPException_1.NotImplemented = require('./lib/types/notimplemented');
     HTTPException_1.PaymentRequired = require('./lib/types/paymentrequired');
     HTTPException_1.ProxyError = require('./lib/types/proxyerror');

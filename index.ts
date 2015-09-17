@@ -23,7 +23,7 @@ module HTTPException{
     export var InternalServerError = require('./lib/types/internalservererror');
     export var MethodNotAllowed = require('./lib/types/methodnotallowed');
     export var NotAcceptable = require('./lib/types/notacceptable');
-    export var NotFound = require('./lib/types/notFound');
+    export var NotFound = require('./lib/types/notfound');
     export var NotImplemented = require('./lib/types/notimplemented');
     export var PaymentRequired = require('./lib/types/paymentrequired');
     export var ProxyError = require('./lib/types/proxyerror');
