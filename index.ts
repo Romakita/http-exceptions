@@ -4,11 +4,18 @@
 declare module Express {
     export interface Request {
         accepts?: Function;
+        paramsRequired(fields:Object);
     }
     export interface Response{
         status(code:number): Response;
         send(msg:string): Response;
     }
+}
+
+interface ParamsRequired{
+    body?:Array<String>;
+    params?:Array<String>;
+    query?:Array<String>;
 }
 
 module HTTPException{
@@ -55,6 +62,40 @@ module HTTPException{
             return next();
         }
 
+    }
+
+    /**
+     *
+     * @returns {function(Express.Request, Express.Response, Function): *}
+     */
+    export function paramsRequired(){
+
+        return function(req:Express.Request, res:Express.Response, next:Function){
+
+            req.paramsRequired = function(fields:ParamsRequired){
+
+                var a = [];
+
+                for(var field in fields){
+                    if(fields[field]){
+                        for(var i = 0; i < fields[field].length; i++){
+
+                            var key = fields[field][i];
+
+                            if(this[field][key] === undefined){
+                                a.push(key);
+                            }
+                        }
+                    }
+                }
+
+                if(a.length){
+                    throw new BadRequest(a);
+                }
+            };
+
+            return next();
+        };
     }
 
     /**

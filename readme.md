@@ -50,6 +50,14 @@ Use `npm install httpexceptions`.
    
    });
    
+   app.get('/my/route/params', function(req, res){
+      
+        req.paramsRequired({
+            query:['id']
+        }); //throw a BadRequest exception if the parameters id isn't defined in queryParams
+  
+   });
+   
    //at the end
    //GlobalHandler middleware catch exception and send response to the client
    app.use(httpException.globalHandler());

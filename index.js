@@ -42,6 +42,32 @@ var HTTPException;
     HTTPException_1.mime = mime;
     /**
      *
+     * @returns {function(Express.Request, Express.Response, Function): *}
+     */
+    function paramsRequired() {
+        return function (req, res, next) {
+            req.paramsRequired = function (fields) {
+                var a = [];
+                for (var field in fields) {
+                    if (fields[field]) {
+                        for (var i = 0; i < fields[field].length; i++) {
+                            var key = fields[field][i];
+                            if (this[field][key] === undefined) {
+                                a.push(key);
+                            }
+                        }
+                    }
+                }
+                if (a.length) {
+                    throw new HTTPException_1.BadRequest(a);
+                }
+            };
+            return next();
+        };
+    }
+    HTTPException_1.paramsRequired = paramsRequired;
+    /**
+     *
      * @returns {function(any, Express.Request, Express.Response): undefined}
      */
     function globalHandler() {
