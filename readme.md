@@ -80,7 +80,7 @@ So, you can find file definition `httpexceptions.d.ts` in the module.
    /// <reference path="node_modules/httpexceptions/httpexceptions.d.ts" />
    
    var httpException = require('httpexception');
-``   
+```
 
 
 ## Test
