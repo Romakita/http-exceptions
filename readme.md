@@ -67,6 +67,22 @@ Use `npm install httpexceptions`.
    app.use(httpException.globalHandler());
 ```
 
+## Use Typescript definition
+
+This module is written in Typescript. But don't use `import HttpExceptions = require('httpexceptions')` instead of 
+`var httpException = require('httpexception');`. It's little buggy because, Error type in typescript is declared as 
+variable / interface and when you import module, the compilator fail.
+
+
+So, you can find file definition `httpexceptions.d.ts` in the module.
+
+``` typescript
+   /// <reference path="node_modules/httpexceptions/httpexceptions.d.ts" />
+   
+   var httpException = require('httpexception');
+``   
+
+
 ## Test
 
 Use `npm test`.
