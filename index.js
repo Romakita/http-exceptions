@@ -1,5 +1,4 @@
-/// <reference path="typings/node/node.d.ts" />
-/// <reference path="typings/express/express.d.ts" />
+/// <reference path="type.d.ts" />
 var HTTPException;
 (function (HTTPException_1) {
     var debugEnable = true;
