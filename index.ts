@@ -47,7 +47,7 @@ module HTTPException{
                 }
             }
 
-            return next();
+            next();
         }
 
     }
@@ -82,7 +82,7 @@ module HTTPException{
                 }
             };
 
-            return next();
+            next();
         };
     }
 
@@ -96,8 +96,14 @@ module HTTPException{
 
             if (err instanceof HTTPException) {
 
-                res.status(err.status)
-                    .send(err.getMessage());
+                try{
+                    res.status(err.status)
+                        .send(err.getMessage());
+                }catch(er){
+                    console.log('unable to run getMessage() method');
+                    res.status(err.status)
+                        .send(err.message);
+                }
 
                 if(debugEnable){
                     throw err;

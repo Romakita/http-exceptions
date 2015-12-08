@@ -35,7 +35,7 @@ var HTTPException;
                     throw new HTTPException_1.NotAcceptable(list[0]);
                 }
             }
-            return next();
+            next();
         };
     }
     HTTPException_1.mime = mime;
@@ -61,7 +61,7 @@ var HTTPException;
                     throw new HTTPException_1.BadRequest(a);
                 }
             };
-            return next();
+            next();
         };
     }
     HTTPException_1.paramsRequired = paramsRequired;
@@ -72,8 +72,15 @@ var HTTPException;
     function globalHandler() {
         return function (err, req, res) {
             if (err instanceof HTTPException_1.HTTPException) {
-                res.status(err.status)
-                    .send(err.getMessage());
+                try {
+                    res.status(err.status)
+                        .send(err.getMessage());
+                }
+                catch (er) {
+                    console.log('unable to run getMessage() method');
+                    res.status(err.status)
+                        .send(err.message);
+                }
                 if (debugEnable) {
                     throw err;
                 }

@@ -25,7 +25,7 @@ declare module HTTPException {
      *
      * @returns {function(Express.Request, Express.Response, Function): *}
      */
-    function paramsRequired(): (req: Express.Request, res: Express.Response, next: Function) => any;
+    function paramsRequired(): (req: Express.Request, res: Express.Response, next: Function) => void;
     /**
      *
      * @returns {function(any, Express.Request, Express.Response): undefined}
