@@ -8,8 +8,6 @@ interface ParamsRequired{
 
 module HTTPException{
 
-    var debugEnable = true;
-
     export var HTTPException = require('./lib/http-exception');
     export var BadGateway = require('./lib/types/badgateway');
     export var BadRequest = require('./lib/types/badrequest');
@@ -25,9 +23,6 @@ module HTTPException{
     export var ServiceUnvailable = require('./lib/types/serviceunvailable');
     export var Unauthorized = require('./lib/types/unauthorized');
 
-    export function debug(b:boolean){
-        debugEnable = b;
-    }
     /**
      *
      * @param list
@@ -78,7 +73,7 @@ module HTTPException{
                 }
 
                 if(a.length){
-                    throw new BadRequest(a);
+                    throw new BadRequest('Parameters required ' + a.join(', ') +'.');
                 }
             };
 
@@ -86,32 +81,6 @@ module HTTPException{
         };
     }
 
-    /**
-     *
-     * @returns {function(any, Express.Request, Express.Response): undefined}
-     */
-    export function globalHandler(){
-
-        return function(err:any, req:Express.Request, res:Express.Response){
-
-            if (err instanceof HTTPException) {
-
-                try{
-                    res.status(err.status)
-                        .send(err.getMessage());
-                }catch(er){
-                    console.log('unable to run getMessage() method');
-                    res.status(err.status)
-                        .send(err.message);
-                }
-
-                if(debugEnable){
-                    throw err;
-                }
-            }
-        }
-
-    }
 }
 
 export = HTTPException;

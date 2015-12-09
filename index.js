@@ -1,7 +1,6 @@
 /// <reference path="type.d.ts" />
 var HTTPException;
 (function (HTTPException_1) {
-    var debugEnable = true;
     HTTPException_1.HTTPException = require('./lib/http-exception');
     HTTPException_1.BadGateway = require('./lib/types/badgateway');
     HTTPException_1.BadRequest = require('./lib/types/badrequest');
@@ -16,10 +15,6 @@ var HTTPException;
     HTTPException_1.ProxyError = require('./lib/types/proxyerror');
     HTTPException_1.ServiceUnvailable = require('./lib/types/serviceunvailable');
     HTTPException_1.Unauthorized = require('./lib/types/unauthorized');
-    function debug(b) {
-        debugEnable = b;
-    }
-    HTTPException_1.debug = debug;
     /**
      *
      * @param list
@@ -58,36 +53,13 @@ var HTTPException;
                     }
                 }
                 if (a.length) {
-                    throw new HTTPException_1.BadRequest(a);
+                    throw new HTTPException_1.BadRequest('Parameters required ' + a.join(', ') + '.');
                 }
             };
             next();
         };
     }
     HTTPException_1.paramsRequired = paramsRequired;
-    /**
-     *
-     * @returns {function(any, Express.Request, Express.Response): undefined}
-     */
-    function globalHandler() {
-        return function (err, req, res) {
-            if (err instanceof HTTPException_1.HTTPException) {
-                try {
-                    res.status(err.status)
-                        .send(err.getMessage());
-                }
-                catch (er) {
-                    console.log('unable to run getMessage() method');
-                    res.status(err.status)
-                        .send(err.message);
-                }
-                if (debugEnable) {
-                    throw err;
-                }
-            }
-        };
-    }
-    HTTPException_1.globalHandler = globalHandler;
 })(HTTPException || (HTTPException = {}));
 module.exports = HTTPException;
 //# sourceMappingURL=index.js.map
