@@ -1,6 +1,6 @@
 {
   "name": "httpexceptions",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Provide exception for HTTP Rest API",
   "main": "index.js",
   "scripts": {
