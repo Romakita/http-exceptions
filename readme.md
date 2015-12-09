@@ -33,24 +33,21 @@ Use `npm install httpexceptions`.
 ## API
 
 ``` javascript
-   var httpException = require('httpexception');
+   var httpExceptions = require('httpexceptions');
    var express = require('express');
    var app = express();
    
    httpException.debug(true);
    
-   app.use(httpException.mime('application/json'));
-   app.use(httpException.paramsRequired());
-   
+   app.use(httpExceptions.mime('application/json'));
    // OR
-   // app.use(httpException.mime(['application/json', 'text/xml']));
+   // app.use(httpExceptions.mime(['application/json', 'text/xml']));
    
-   app.get('/my/route/exception', function(req, res){
+   app.get('/my/route', function(req, res){
    
-        throw new httpException.BadRequest('Custom Message'); //Emit 
-        
+        throw new httpExceptions.BadRequest('Custom Message'); //Emit
         // OR
-        // throw new httpException.HTTPException(510, 'Custom Message');
+        // throw new httpExceptions.HTTPException(510, 'Custom Message');
    
    });
    
@@ -61,25 +58,23 @@ Use `npm install httpexceptions`.
         }); //throw a BadRequest exception if the parameters id isn't defined in queryParams
   
    });
+
+   app.post('/my/route/params', function(req, res){
+
+       req.paramsRequired({
+           body:['id']
+       }); //throw a BadRequest exception if the parameters id isn't defined in bodyParams
+
+   });
    
-   //at the end
    //GlobalHandler middleware catch exception and send response to the client
-   app.use(httpException.globalHandler());
-```
+   app.use(function(err, request, response){
 
-## Use Typescript definition
+        if(err instanceof HTTPExpcetions.HTTPException){
+            response.status(err.status).send(err.message);
+        }
 
-This module is written in Typescript. But don't use `import HttpExceptions = require('httpexceptions')` instead of 
-`var httpException = require('httpexception');`. It's little buggy because, Error type in typescript is declared as 
-variable / interface and when you import module, the compilator fail.
-
-
-So, you can find file definition `httpexceptions.d.ts` in the module.
-
-``` typescript
-   /// <reference path="node_modules/httpexceptions/httpexceptions.d.ts" />
-   
-   var httpException = require('httpexception');
+   });
 ```
 
 
