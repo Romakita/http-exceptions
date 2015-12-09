@@ -44,6 +44,12 @@ class HTTPException implements Error {
         }
     }
 
+    toString(){
+        //console.warn(this.type + ': ' + this.status + ' ' + this.name  + ' => ' + this.message)
+        return this.name  + '('+this.status+'): ' + this.message;
+    }
+
 }
 
 export = HTTPException;
+

@@ -21,6 +21,7 @@ describe('HTTPExceptions', function(){
         }catch(err){
             expect(err instanceof HTTPException.HTTPException).to.be.true;
             expect(err.status).to.equal(502);
+            expect(err.toString()).to.equal('BAD_GATEWAY(502): message');
         }
 
     });
@@ -28,11 +29,11 @@ describe('HTTPExceptions', function(){
     it('should emit a BadRequest exception', function(){
 
         try{
-            throw new HTTPException.BadRequest('message');
+            throw new HTTPException.BadRequest('Parameters required [t1,t2]' );
         }catch(err){
-
             expect(err instanceof HTTPException.HTTPException).to.be.true;
             expect(err.status).to.equal(400);
+            expect(err.toString()).to.equal('BAD_REQUEST(400): Parameters required [t1,t2]');
         }
 
     });
@@ -45,6 +46,7 @@ describe('HTTPExceptions', function(){
 
             expect(err instanceof HTTPException.HTTPException).to.be.true;
             expect(err.status).to.equal(403);
+            expect(err.toString()).to.equal('FORBIDDEN(403): message');
         }
 
     });
