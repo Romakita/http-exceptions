@@ -2,11 +2,9 @@
 
 > Provide Exceptions for REST API based on Express.js.
 
-This module lets you to throw an HTTPException quickly.
+This module lets you to throw an HTTP Exception quickly.
 
 ## Features
-* Very Simple API
-* Two middlewares are available. HTTPException.mime() and HTTPException.globalHandler()
 
 Some HTTP Exception are already implemented : 
  * BadRequest
@@ -23,7 +21,7 @@ Some HTTP Exception are already implemented :
  * ServiceUnvailable
  * GatewayTimeout
  
-You can use HTTPException method to throw a custom Exception (see example).
+You can use HTTPExceptions method to throw a custom Exception (see example).
 
 
 ## Install
@@ -37,7 +35,7 @@ Use `npm install httpexceptions`.
    var express = require('express');
    var app = express();
    
-   httpException.debug(true);
+   httpExceptions.debug(true);
    
    app.use(httpExceptions.mime('application/json'));
    // OR

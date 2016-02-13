@@ -3,7 +3,6 @@ import * as HTTPException from "../../index";
 
 var expect = Chai.expect;
 
-
 describe('HTTPExceptions', function(){
 
 

@@ -4,10 +4,10 @@
   "description": "Provide exception for HTTP Rest API",
   "main": "index.js",
   "scripts": {
-    "pretest": "typings install && tsc",
+    "build": "typings install && tsc",
     "prepublish": "typings install",
     "install":"tsc",
-    "build": "typings install && tsc",
+    "pretest": "typings install && tsc",
     "test": "mocha"
   },
   "repository": {

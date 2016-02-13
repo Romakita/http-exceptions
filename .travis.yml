@@ -6,7 +6,9 @@ node_js:
   - '5'
 
 before_install:
-  - npm install -g mocha chai typings
+  - npm install -g mocha typings
 install:
   - npm install
   - tsc --version
+test:
+  - mocha
