@@ -30,7 +30,7 @@ class HTTPException implements Error {
 
         if (innerException) {
             if (innerException instanceof Error) {
-                this.innerException = innerException;
+                this.innerException = <Error> innerException;
                 this.message = this.message + ", innerException: " + this.innerException.message;
             }
             else if (typeof innerException === "string") {
@@ -38,7 +38,7 @@ class HTTPException implements Error {
                 this.message = this.message + ", innerException: " + this.innerException.message;
             }
             else {
-                this.innerException = innerException;
+                this.innerException = <Error> innerException;
                 this.message = this.message + ", innerException: " + this.innerException;
             }
         }

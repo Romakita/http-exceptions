@@ -1,5 +1,4 @@
-/// <reference path="typings/node/node.d.ts" />
-/// <reference path="typings/express/express.d.ts" />
+/// <reference path="typings/main.d.ts" />
 
 declare module Express {
     export interface Request {

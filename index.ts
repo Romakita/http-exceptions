@@ -1,4 +1,3 @@
-/// <reference path="type.d.ts" />
 
 interface ParamsRequired{
     body?:Array<String>;

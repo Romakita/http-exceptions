@@ -1,4 +1,3 @@
-/// <reference path="type.d.ts" />
 var HTTPException;
 (function (HTTPException_1) {
     HTTPException_1.HTTPException = require('./lib/http-exception');
