@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 502;
 
-class ProxyError extends HTTPException{
+export class ProxyError extends Exception{
 
     name:string = 'PROXY_ERROR';
     status:number = CODE;
@@ -10,5 +10,3 @@ class ProxyError extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = ProxyError;

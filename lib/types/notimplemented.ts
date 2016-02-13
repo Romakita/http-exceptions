@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 501;
 
-class NotImplemented extends HTTPException{
+export class NotImplemented extends Exception{
 
     name:string = 'NOT_IMPLEMENTED';
     status:number = CODE;
@@ -10,5 +10,3 @@ class NotImplemented extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = NotImplemented;

@@ -1,8 +1,8 @@
 
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 504;
 
-class GatewayTimeout extends HTTPException{
+export class GatewayTimeout extends Exception{
 
     name:string = 'GATEWAY_TIMEOUT';
     status:number = CODE;
@@ -11,5 +11,3 @@ class GatewayTimeout extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = GatewayTimeout;

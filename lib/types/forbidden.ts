@@ -1,8 +1,8 @@
 
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 403;
 
-class Forbidden extends HTTPException{
+export class Forbidden extends Exception{
 
     name:string = 'FORBIDDEN';
     status:number = CODE;
@@ -11,5 +11,3 @@ class Forbidden extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = Forbidden;

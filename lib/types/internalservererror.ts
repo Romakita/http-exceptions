@@ -1,9 +1,9 @@
 
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 
 const CODE = 500;
 
-class InternalServerError extends HTTPException{
+export class InternalServerError extends Exception{
 
     name:string = 'INTERNAL_SERVER_ERROR';
     status:number = CODE;
@@ -12,5 +12,3 @@ class InternalServerError extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = InternalServerError;

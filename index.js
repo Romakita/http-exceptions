@@ -1,64 +1,76 @@
-var HTTPException;
-(function (HTTPException_1) {
-    HTTPException_1.HTTPException = require('./lib/http-exception');
-    HTTPException_1.BadGateway = require('./lib/types/badgateway');
-    HTTPException_1.BadRequest = require('./lib/types/badrequest');
-    HTTPException_1.Forbidden = require('./lib/types/forbidden');
-    HTTPException_1.GatewayTimeout = require('./lib/types/badrequest');
-    HTTPException_1.InternalServerError = require('./lib/types/internalservererror');
-    HTTPException_1.MethodNotAllowed = require('./lib/types/methodnotallowed');
-    HTTPException_1.NotAcceptable = require('./lib/types/notacceptable');
-    HTTPException_1.NotFound = require('./lib/types/notfound');
-    HTTPException_1.NotImplemented = require('./lib/types/notimplemented');
-    HTTPException_1.PaymentRequired = require('./lib/types/paymentrequired');
-    HTTPException_1.ProxyError = require('./lib/types/proxyerror');
-    HTTPException_1.ServiceUnvailable = require('./lib/types/serviceunvailable');
-    HTTPException_1.Unauthorized = require('./lib/types/unauthorized');
-    /**
-     *
-     * @param list
-     * @returns {function(Object, Object, Function): *}
-     */
-    function mime(list) {
-        if (typeof list == 'string') {
-            list = [list];
-        }
-        return function (req, res, next) {
-            for (var i = 0; i < list.length; i++) {
-                if (!req.accepts(list[0])) {
-                    throw new HTTPException_1.NotAcceptable(list[0]);
-                }
-            }
-            next();
-        };
+"use strict";
+var exception_1 = require("./lib/exception");
+var badgateway_1 = require("./lib/types/badgateway");
+var badrequest_1 = require("./lib/types/badrequest");
+var forbidden_1 = require("./lib/types/forbidden");
+var gatewaytimeout_1 = require("./lib/types/gatewaytimeout");
+var internalservererror_1 = require("./lib/types/internalservererror");
+var methodnotallowed_1 = require("./lib/types/methodnotallowed");
+var notacceptable_1 = require("./lib/types/notacceptable");
+var notfound_1 = require("./lib/types/notfound");
+var notimplemented_1 = require("./lib/types/notimplemented");
+var paymentrequired_1 = require("./lib/types/paymentrequired");
+var proxyerror_1 = require("./lib/types/proxyerror");
+var serviceunvailable_1 = require("./lib/types/serviceunvailable");
+var unauthorized_1 = require("./lib/types/unauthorized");
+exports.HTTPException = exception_1.Exception;
+exports.Exception = exception_1.Exception;
+exports.BadGateway = badgateway_1.BadGateway;
+exports.BadRequest = badrequest_1.BadRequest;
+exports.Forbidden = forbidden_1.Forbidden;
+exports.GatewayTimeout = gatewaytimeout_1.GatewayTimeout;
+exports.InternalServerError = internalservererror_1.InternalServerError;
+exports.MethodNotAllowed = methodnotallowed_1.MethodNotAllowed;
+exports.NotAcceptable = notacceptable_1.NotAcceptable;
+exports.NotFound = notfound_1.NotFound;
+exports.NotImplemented = notimplemented_1.NotImplemented;
+exports.PaymentRequired = paymentrequired_1.PaymentRequired;
+exports.ProxyError = proxyerror_1.ProxyError;
+exports.ServiceUnvailable = serviceunvailable_1.ServiceUnvailable;
+exports.Unauthorized = unauthorized_1.Unauthorized;
+/**
+ *
+ * @param list
+ * @returns {function(Object, Object, Function): *}
+ */
+function mime(list) {
+    if (typeof list == 'string') {
+        list = [list];
     }
-    HTTPException_1.mime = mime;
-    /**
-     *
-     * @returns {function(Express.Request, Express.Response, Function): *}
-     */
-    function paramsRequired() {
-        return function (req, res, next) {
-            req.paramsRequired = function (fields) {
-                var a = [];
-                for (var field in fields) {
-                    if (fields[field]) {
-                        for (var i = 0; i < fields[field].length; i++) {
-                            var key = fields[field][i];
-                            if (this[field][key] === undefined) {
-                                a.push(key);
-                            }
+    return function (req, res, next) {
+        for (var i = 0; i < list.length; i++) {
+            if (!req.accepts(list[0])) {
+                throw new exports.NotAcceptable(list[0]);
+            }
+        }
+        next();
+    };
+}
+exports.mime = mime;
+/**
+ *
+ * @returns {function(Express.Request, Express.Response, Function): *}
+ */
+function paramsRequired() {
+    return function (req, res, next) {
+        req.paramsRequired = function (fields) {
+            var a = [];
+            for (var field in fields) {
+                if (fields[field]) {
+                    for (var i = 0; i < fields[field].length; i++) {
+                        var key = fields[field][i];
+                        if (this[field][key] === undefined) {
+                            a.push(key);
                         }
                     }
                 }
-                if (a.length) {
-                    throw new HTTPException_1.BadRequest('Parameters required ' + a.join(', ') + '.');
-                }
-            };
-            next();
+            }
+            if (a.length) {
+                throw new exports.BadRequest('Parameters required ' + a.join(', ') + '.');
+            }
         };
-    }
-    HTTPException_1.paramsRequired = paramsRequired;
-})(HTTPException || (HTTPException = {}));
-module.exports = HTTPException;
+        next();
+    };
+}
+exports.paramsRequired = paramsRequired;
 //# sourceMappingURL=index.js.map

@@ -1,8 +1,8 @@
 
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 502;
 
-class BadGateway extends HTTPException{
+export class BadGateway extends Exception{
 
     name:string = 'BAD_GATEWAY';
     status:number = CODE;
@@ -11,5 +11,3 @@ class BadGateway extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = BadGateway;

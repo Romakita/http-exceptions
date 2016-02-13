@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 401;
 
-class Unauthorized extends HTTPException{
+export class Unauthorized extends Exception{
 
     name:string = 'UNAUTHORIZED';
     status:number = CODE;
@@ -10,5 +10,3 @@ class Unauthorized extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = Unauthorized;

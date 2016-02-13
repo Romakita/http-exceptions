@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 405;
 
-class MethodNotAllowed extends HTTPException{
+export class MethodNotAllowed extends Exception{
 
     name:string = 'METHOD_NOT_ALLOWED';
     status:number = CODE;
@@ -10,5 +10,3 @@ class MethodNotAllowed extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = MethodNotAllowed;

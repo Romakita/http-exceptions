@@ -1,8 +1,7 @@
-/**
- * Created by romakita on 01/09/15.
- */
-var expect = require('chai').expect;
-var HTTPException = require('../../index.js');
+import * as Chai from 'chai';
+import HTTPException = require("../../lib/http-exception");
+var expect = Chai.expect;
+
 
 describe('HTTPExceptions', function(){
 

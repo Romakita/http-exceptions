@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 503;
 
-class ServiceUnvailable extends HTTPException{
+export class ServiceUnvailable extends Exception{
 
     name:string = 'SERVICE_UNVAILABLE';
     status:number = CODE;
@@ -10,5 +10,3 @@ class ServiceUnvailable extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = ServiceUnvailable;

@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 402;
 
-class PaymentRequired extends HTTPException{
+export class PaymentRequired extends Exception{
 
     name:string = 'PAYMENT_REQUIRED';
     status:number = CODE;
@@ -10,5 +10,3 @@ class PaymentRequired extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = PaymentRequired;

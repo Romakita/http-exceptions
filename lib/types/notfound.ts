@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 404;
 
-class NotFound extends HTTPException{
+export class NotFound extends Exception{
 
     name:string = 'NOT_FOUND';
     status:number = CODE;
@@ -10,5 +10,3 @@ class NotFound extends HTTPException{
         super(CODE, message);
     }
 }
-
-export = NotFound;

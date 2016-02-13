@@ -1,7 +1,7 @@
-import HTTPException = require('../http-exception');
+import {Exception} from '../exception';
 const CODE = 406;
 
-class NotAcceptable extends HTTPException{
+export class NotAcceptable extends Exception{
 
     name:string = 'NOT_ACCEPTABLE';
     status:number = CODE;
@@ -10,5 +10,3 @@ class NotAcceptable extends HTTPException{
         super(CODE, "You must accept content-type " + message);
     }
 }
-
-export = NotAcceptable;
