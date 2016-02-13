@@ -2,4 +2,3 @@
 --ui bdd
 --check-leaks
 --recursive
---global

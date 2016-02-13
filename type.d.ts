@@ -1,4 +1,3 @@
-/// <reference path="typings/main.d.ts" />
 
 declare module Express {
     export interface Request {
