@@ -30,6 +30,7 @@ node_modules
 
 !node_modules/grunt_develop/
 node_modules/
+/.gitignore
 .idea
 
 # Typings
