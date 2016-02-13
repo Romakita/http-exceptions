@@ -46,7 +46,7 @@ export function mime(list:Array<string>|string):Function{
         list = [<string>list];
     }
 
-    return function(req:Express.Request, res:Express.Response, next:Function){
+    return function(req:any, res:any, next:Function){
 
         for(var i = 0; i < list.length; i++){
             if (!req.accepts(list[0])){
@@ -65,7 +65,7 @@ export function mime(list:Array<string>|string):Function{
  */
 export function paramsRequired(){
 
-    return function(req:Express.Request, res:Express.Response, next:Function){
+    return function(req:any, res:any, next:Function){
 
         req.paramsRequired = function(fields:ParamsRequired){
 
