@@ -1,12 +1,12 @@
 {
   "name": "httpexceptions",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Provide exception for HTTP Rest API",
   "main": "index.js",
   "scripts": {
     "build": "typings install && tsc",
-    "preinstall":"typings install",
-    "install":"tsc",
+    "preinstall": "typings install",
+    "install": "tsc",
     "pretest": "typings install && tsc",
     "test": "mocha"
   },
