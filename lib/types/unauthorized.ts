@@ -1,4 +1,4 @@
-import {Exception} from '../_exception';
+import {Exception} from '../exception';
 const CODE = 401;
 
 export class Unauthorized extends Exception{

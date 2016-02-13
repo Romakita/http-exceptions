@@ -1,5 +1,5 @@
 
-import {Exception} from '../_exception';
+import {Exception} from '../exception';
 const CODE = 504;
 
 export class GatewayTimeout extends Exception{

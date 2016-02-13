@@ -1,4 +1,4 @@
-import {Exception as _Exception} from "./lib/_exception";
+import {Exception as _Exception} from "./lib/exception";
 import {BadGateway as _BadGateway} from "./lib/types/badgateway";
 import {BadRequest as _BadRequest} from "./lib/types/badrequest";
 import {Forbidden as _Forbidden} from "./lib/types/forbidden";

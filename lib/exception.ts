@@ -15,6 +15,7 @@ export class Exception implements Error {
     public status:number;
 
     constructor(status:any, message?: string, innerException?: Error|string) {
+
         // Guard against throw Exception(...) usage.
         if (!(this instanceof Exception)) return new Exception(status, message, innerException);
 

@@ -1,5 +1,5 @@
 
-import {Exception} from '../_exception';
+import {Exception} from '../exception';
 const CODE = 400;
 
 export class BadRequest extends Exception{
