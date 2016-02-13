@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "typings install && tsc",
-    "prepublish": "typings install",
-    "install":"tsc",
+    "install":"typings install && tsc",
     "pretest": "typings install && tsc",
     "test": "mocha"
   },
