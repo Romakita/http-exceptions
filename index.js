@@ -1,5 +1,5 @@
 "use strict";
-var exception_1 = require("./lib/exception");
+var _exception_1 = require("./lib/_exception");
 var badgateway_1 = require("./lib/types/badgateway");
 var badrequest_1 = require("./lib/types/badrequest");
 var forbidden_1 = require("./lib/types/forbidden");
@@ -13,8 +13,8 @@ var paymentrequired_1 = require("./lib/types/paymentrequired");
 var proxyerror_1 = require("./lib/types/proxyerror");
 var serviceunvailable_1 = require("./lib/types/serviceunvailable");
 var unauthorized_1 = require("./lib/types/unauthorized");
-exports.HTTPException = exception_1.Exception;
-exports.Exception = exception_1.Exception;
+exports.HTTPException = _exception_1.Exception;
+exports.Exception = _exception_1.Exception;
 exports.BadGateway = badgateway_1.BadGateway;
 exports.BadRequest = badrequest_1.BadRequest;
 exports.Forbidden = forbidden_1.Forbidden;

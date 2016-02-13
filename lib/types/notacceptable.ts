@@ -1,4 +1,4 @@
-import {Exception} from '../exception';
+import {Exception} from '../_exception';
 const CODE = 406;
 
 export class NotAcceptable extends Exception{

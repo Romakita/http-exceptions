@@ -1,4 +1,4 @@
-import {Exception} from '../exception';
+import {Exception} from '../_exception';
 const CODE = 501;
 
 export class NotImplemented extends Exception{
