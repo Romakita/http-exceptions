@@ -22,7 +22,7 @@
     "Typescript"
   ],
   "author": "Romakita",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/romakita/httpexceptions/issues"
   },
