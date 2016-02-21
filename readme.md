@@ -1,8 +1,7 @@
-# HTTPExceptions 
+# httpexceptions 
 
 [![Build Status](https://travis-ci.org/Romakita/httpexceptions.svg?branch=master)](https://travis-ci.org/Romakita/httpexceptions)
 [![Coverage Status](https://coveralls.io/repos/github/Romakita/httpexceptions/badge.svg?branch=master)](https://coveralls.io/github/Romakita/httpexceptions?branch=master)
-
 > Provide Exceptions for REST API based on Express.js.
 
 This module lets you to throw an HTTP Exception quickly.
