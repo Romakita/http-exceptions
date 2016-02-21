@@ -37,12 +37,6 @@ node_modules/
 typings/
 
 #Typescript
-index.js
-index.js.map
-index.d.ts
-lib/**/*.js
-lib/*.d.ts
-lib/**/*.d.ts
-lib/**/*.js.map
-test/*.js
-test/*.js.map
+*.js
+*.js.map
+*.d.ts
