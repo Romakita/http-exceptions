@@ -14,10 +14,7 @@ export class Exception implements Error {
     public innerException: Error;
     public status:number;
 
-    constructor(status:any, message?: string, innerException?: Error|string) {
-
-        // Guard against throw Exception(...) usage.
-        if (!(this instanceof Exception)) return new Exception(status, message, innerException);
+    constructor(status:any, message?: string, innerException?: any) {
 
         Error.apply(this, arguments);
 
@@ -32,7 +29,7 @@ export class Exception implements Error {
         if (innerException) {
             if (innerException instanceof Error) {
                 this.innerException = <Error> innerException;
-                this.message = this.message + ", innerException: " + this.innerException.message;
+                this.message = this.message + ", innerException: " + this.innerException.message ;
             }
             else if (typeof innerException === "string") {
                 this.innerException = new Error(innerException);
@@ -43,11 +40,13 @@ export class Exception implements Error {
                 this.message = this.message + ", innerException: " + this.innerException;
             }
         }
+
+        this.message = (this.message+ " ").trim();
     }
 
     toString(){
         //console.warn(this.type + ': ' + this.status + ' ' + this.name  + ' => ' + this.message)
-        return this.name  + '('+this.status+'): ' + this.message;
+        return (this.name  + '('+this.status+'): ' + this.message + " ").trim();
     }
 
 }

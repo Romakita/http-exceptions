@@ -1,4 +1,4 @@
-import {Exception} from '../exception';
+import {Exception} from './exception';
 const CODE = 503;
 
 export class ServiceUnvailable extends Exception{

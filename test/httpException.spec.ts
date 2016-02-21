@@ -1,24 +1,70 @@
 import * as Chai from 'chai';
-import * as HTTPException from "../../index";
+import {Exception} from "../lib/exception";
+import {BadGateway} from "../lib/badgateway";
+import {BadRequest} from "../lib/badrequest";
+import {Forbidden} from "../lib/forbidden";
+import {GatewayTimeout} from "../lib/gatewaytimeout";
+import {InternalServerError} from "../lib/internalservererror";
+import {MethodNotAllowed} from "../lib/methodnotallowed";
+import {NotAcceptable} from "../lib/notacceptable";
+import {NotFound} from "../lib/notfound";
+import {NotImplemented} from "../lib/notimplemented";
+import {PaymentRequired} from "../lib/paymentrequired";
+import {ProxyError} from "../lib/proxyerror";
+import {ServiceUnvailable} from "../lib/serviceunvailable";
+import {Unauthorized} from "../lib/unauthorized";
+
 
 var expect = Chai.expect;
 
-describe('HTTPExceptions', function(){
+describe('HttpExceptions', function(){
 
+    describe('Exception', function(){
+        it('should use innerException', function(){
 
-    it('should do something', function(){
+            var exception = new Exception(203, 'test', new Error('test'));
 
-        expect(HTTPException).to.be.an('object');
+            expect(exception.status).to.equal(203);
+            expect(exception.toString()).to.equal('HttpException(203): test, innerException: test');
 
+        });
+
+        it('should use innerException as string', function(){
+
+            var exception = new Exception(203, 'test', 'test');
+
+            expect(exception.status).to.equal(203);
+            expect(exception.toString()).to.equal('HttpException(203): test, innerException: test');
+
+        });
+
+        it('should use innerException as string', function(){
+
+            var exception = new Exception(203, 'test', 1);
+
+            expect(exception.status).to.equal(203);
+            expect(exception.toString()).to.equal('HttpException(203): test, innerException: 1');
+
+        });
+
+        it('should return empty message when message parameters is undefined', function(){
+
+            var exception = new Exception(203, undefined);
+
+            expect(exception.status).to.equal(203);
+            expect(exception.toString()).to.equal('HttpException(203):');
+
+        });
     });
 
     describe('BadGateway', function(){
         it('should emit an exception', function(){
 
             try{
-                throw new HTTPException.BadGateway('message');
+                throw new BadGateway('message');
             }catch(err){
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
+                expect(err).to.be.an('object');
+                expect(err instanceof Exception).to.be.true;
                 expect(err.status).to.equal(502);
                 expect(err.toString()).to.equal('BAD_GATEWAY(502): message');
             }
@@ -32,9 +78,9 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.BadRequest('Parameters required [t1,t2]');
+                throw new BadRequest('Parameters required [t1,t2]');
             } catch (err) {
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
+
                 expect(err.status).to.equal(400);
                 expect(err.toString()).to.equal('BAD_REQUEST(400): Parameters required [t1,t2]');
             }
@@ -47,10 +93,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.Forbidden('message');
+                throw new Forbidden('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(403);
                 expect(err.toString()).to.equal('FORBIDDEN(403): message');
             }
@@ -63,10 +107,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.GatewayTimeout('message');
+                throw new GatewayTimeout('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(504);
             }
 
@@ -78,10 +120,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.InternalServerError('message');
+                throw new InternalServerError('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(500);
             }
 
@@ -93,10 +133,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.MethodNotAllowed('message');
+                throw new MethodNotAllowed('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(405);
             }
 
@@ -108,10 +146,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.NotAcceptable('message');
+                throw new NotAcceptable('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(406);
             }
 
@@ -124,10 +160,10 @@ describe('HTTPExceptions', function(){
         it('should emit an  exception', function () {
 
             try {
-                throw new HTTPException.NotFound('message');
+                throw new NotFound('message');
             } catch (err) {
 
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
+
                 expect(err.status).to.equal(404);
             }
 
@@ -139,10 +175,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.NotImplemented('message');
+                throw new NotImplemented('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(501);
             }
 
@@ -154,10 +188,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.PaymentRequired('message');
+                throw new PaymentRequired('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(402);
             }
 
@@ -169,10 +201,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.ProxyError('message');
+                throw new ProxyError('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(502);
             }
 
@@ -184,10 +214,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.ServiceUnvailable('message');
+                throw new ServiceUnvailable('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(503);
             }
 
@@ -199,10 +227,8 @@ describe('HTTPExceptions', function(){
         it('should emit an exception', function () {
 
             try {
-                throw new HTTPException.Unauthorized('message');
+                throw new Unauthorized('message');
             } catch (err) {
-
-                expect(err instanceof HTTPException.HTTPException).to.be.true;
                 expect(err.status).to.equal(401);
             }
 

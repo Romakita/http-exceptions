@@ -1,4 +1,4 @@
-import {Exception} from '../exception';
+import {Exception} from './exception';
 const CODE = 405;
 
 export class MethodNotAllowed extends Exception{

@@ -4,11 +4,11 @@
   "description": "Provide exception for HTTP Rest API",
   "main": "index.js",
   "scripts": {
-    "build": "typings install && tsc",
     "preinstall": "typings install",
-    "install": "tsc",
-    "pretest": "typings install && tsc",
-    "test": "mocha"
+    "postinstall": "tsc",
+    "test": "mocha --reporter spec --check-leaks --bail test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^2.1.0",
+    "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "typescript": "^1.7.5"
   },
