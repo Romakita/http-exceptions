@@ -1,3 +1,4 @@
+"use strict";
 var badrequest_1 = require("./lib/badrequest");
 function paramsRequired() {
     return function (req, res, next) {
