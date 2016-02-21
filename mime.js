@@ -1,4 +1,3 @@
-"use strict";
 var notacceptable_1 = require("./lib/notacceptable");
 function mime(list) {
     if (typeof list == 'string') {
