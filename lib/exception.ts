@@ -20,7 +20,7 @@ export class Exception implements Error {
 
         if (typeof Error.captureStackTrace === 'function') {
             //noinspection JSUnresolvedFunction
-            Error.captureStackTrace(this, arguments['callee']);
+            Error.captureStackTrace(this, (<any>this).contructor);
         }
 
         this.status = status;
