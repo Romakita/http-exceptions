@@ -1,11 +1,12 @@
 {
   "name": "httpexceptions",
-  "ambientDependencies": {
-    "chai": "github:DefinitelyTyped/DefinitelyTyped/chai/chai.d.ts#9c25433c84251bfe72bf0030a95edbbb2c81c9d5",
-    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#8e7c1b59121496da379511628fc444f9596cc34c",
-    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#8e7c1b59121496da379511628fc444f9596cc34c",
-    "mocha": "github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#d6dd320291705694ba8e1a79497a908e9f5e6617",
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#8e7c1b59121496da379511628fc444f9596cc34c",
-    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#8e7c1b59121496da379511628fc444f9596cc34c"
+  "globalDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160514165920",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160501131543"
   }
 }
