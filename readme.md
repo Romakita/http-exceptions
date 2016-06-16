@@ -39,12 +39,6 @@ $ npm install httpexceptions
    var express = require('express');
    var app = express();
    
-   httpExceptions.debug(true);
-   
-   app.use(httpExceptions.mime('application/json'));
-   // OR
-   // app.use(httpExceptions.mime(['application/json', 'text/xml']));
-   
    app.get('/my/route', function(req, res){
    
         throw new httpExceptions.BadRequest('Custom Message'); //Emit
@@ -55,24 +49,17 @@ $ npm install httpexceptions
    
    app.get('/my/route/params', function(req, res){
       
-        req.paramsRequired({
-            query:['id']
-        }); //throw a BadRequest exception if the parameters id isn't defined in queryParams
-  
+      if (req.params.id === undefined){
+        throw new httpExceptions.BadRequest();
+      }
+      
    });
-
-   app.post('/my/route/params', function(req, res){
-
-       req.paramsRequired({
-           body:['id']
-       }); //throw a BadRequest exception if the parameters id isn't defined in bodyParams
-
-   });
+   
    
    //GlobalHandler middleware catch exception and send response to the client
    app.use(function(err, request, response){
 
-        if(err instanceof HTTPExpcetions.HTTPException){
+        if(err instanceof HTTPExpcetions.Exception){
             response.status(err.status).send(err.message);
         }
 
